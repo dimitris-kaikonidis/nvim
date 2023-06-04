@@ -19,6 +19,7 @@ return require('packer').startup(function(use)
     use 'theprimeagen/harpoon'
     use 'mbbill/undotree'
     use 'tpope/vim-fugitive'
+    use { 'rust-lang/rust.vim', ft = 'rust', config = function() vim.g.rustfmt_autosave = 1 end }
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
@@ -29,12 +30,15 @@ return require('packer').startup(function(use)
             {'williamboman/mason-lspconfig.nvim'},
 
             -- Autocompletion
+            {'saadparwaiz1/cmp_luasnip'},
             {'hrsh7th/nvim-cmp'},
             {'hrsh7th/cmp-buffer'},
             {'hrsh7th/cmp-path'},
-            {'saadparwaiz1/cmp_luasnip'},
             {'hrsh7th/cmp-nvim-lsp'},
             {'hrsh7th/cmp-nvim-lua'},
+            {'hrsh7th/cmp-nvim-lsp-signature-help'},
+            {'hrsh7th/cmp-vsnip'},
+            {'hrsh7th/vim-vsnip'},
 
             -- Snippets
             {'L3MON4D3/LuaSnip'},

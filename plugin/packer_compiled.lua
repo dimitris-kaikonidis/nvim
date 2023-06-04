@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/Users/dimitrios.kaikonidis/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["cmp-nvim-lsp-signature-help"] = {
+    loaded = true,
+    path = "/Users/dimitrios.kaikonidis/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp-signature-help",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help"
+  },
   ["cmp-nvim-lua"] = {
     loaded = true,
     path = "/Users/dimitrios.kaikonidis/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
@@ -108,6 +113,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/dimitrios.kaikonidis/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
+  },
+  ["cmp-vsnip"] = {
+    loaded = true,
+    path = "/Users/dimitrios.kaikonidis/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
+    url = "https://github.com/hrsh7th/cmp-vsnip"
   },
   cmp_luasnip = {
     loaded = true,
@@ -199,6 +209,14 @@ _G.packer_plugins = {
     path = "/Users/dimitrios.kaikonidis/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["rust.vim"] = {
+    config = { "\27LJ\2\n2\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\1\0=\1\2\0K\0\1\0\21rustfmt_autosave\6g\bvim\0" },
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/Users/dimitrios.kaikonidis/.local/share/nvim/site/pack/packer/opt/rust.vim",
+    url = "https://github.com/rust-lang/rust.vim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/dimitrios.kaikonidis/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -219,6 +237,11 @@ _G.packer_plugins = {
     path = "/Users/dimitrios.kaikonidis/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
+  ["vim-vsnip"] = {
+    loaded = true,
+    path = "/Users/dimitrios.kaikonidis/.local/share/nvim/site/pack/packer/start/vim-vsnip",
+    url = "https://github.com/hrsh7th/vim-vsnip"
+  },
   ["zen-mode.nvim"] = {
     loaded = true,
     path = "/Users/dimitrios.kaikonidis/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
@@ -227,6 +250,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType rust ++once lua require("packer.load")({'rust.vim'}, { ft = "rust" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
+vim.cmd [[augroup filetypedetect]]
+time([[Sourcing ftdetect script at: /Users/dimitrios.kaikonidis/.local/share/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim]], true)
+vim.cmd [[source /Users/dimitrios.kaikonidis/.local/share/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim]]
+time([[Sourcing ftdetect script at: /Users/dimitrios.kaikonidis/.local/share/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim]], false)
+vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
